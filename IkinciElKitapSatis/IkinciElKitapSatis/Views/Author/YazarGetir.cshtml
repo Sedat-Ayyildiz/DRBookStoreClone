@@ -1,0 +1,37 @@
+﻿@model IkinciElKitapSatis.Models.YAZARLAR
+
+@{
+    ViewBag.Title = "YazarGetir";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas bi-book me-1"></i>
+                        <span class="fs-3">Yazar Güncelleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("YazarGuncelle", "Author", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(s => s.YAZARID)
+                            @Html.LabelFor(s => s.YAZARADI)
+                            @Html.TextBoxFor(s => s.YAZARADI, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.ULUS)
+                            @Html.TextBoxFor(s => s.ULUS, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-success">Güncelle</button>
+                            <a href="/Author/Index" class="btn btn-outline-danger">Vazgeç</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>

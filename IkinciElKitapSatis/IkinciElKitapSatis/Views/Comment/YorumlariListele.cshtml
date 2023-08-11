@@ -1,0 +1,62 @@
+﻿@using IkinciElKitapSatis.Models
+@model List<YORUMLAR>
+
+@{
+    ViewBag.Title = "YorumlariListele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="layoutSidenav_content" class="mt-3">
+    <main>
+        <div class="container-fluid px-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    <span class="fs-3">Yorum Listesi</span>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Yorum Id</th>
+                                <th>Kitap Adı</th>
+                                <th>Yorum</th>
+                                <th>Tarih</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Yorum Id</th>
+                                <th>Kitap Adı</th>
+                                <th>Yorum</th>
+                                <th>Tarih</th>
+                                <th>Kullanıcı Adı</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var yorumlistesi in Model)
+                            {
+                                <tr>
+                                    <td>@yorumlistesi.YORUMID</td>
+                                    <td>@yorumlistesi.KITAPLAR.KITAPADI</td>
+                                    <td>@yorumlistesi.YORUM</td>
+                                    <td>@yorumlistesi.TARIH</td>
+                                    <td>@yorumlistesi.KULLANICILAR.KULLANICIADI</td>
+                                    <td><a href="/Comment/YorumSil/@yorumlistesi.YORUMID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Comment/YorumGetir/@yorumlistesi.YORUMID" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--FOOTER-->
+    @Html.Partial("_PartialFooter")
+</div>

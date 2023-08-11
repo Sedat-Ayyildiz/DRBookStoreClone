@@ -1,0 +1,81 @@
+﻿@using IkinciElKitapSatis.Models
+@model List<YORUMLAR>
+
+<!--COMMENTS-->
+@if (User.IsInRole("A") || User.IsInRole("M"))
+{
+    <div class="container">
+        <div class="row my-2">
+            <div class="col-md-12">
+                <form style="border:2px solid gray;border-radius:10px" class="py-2" method="post" id="yorum-form">
+                    <h4 class="text-center">Bir Yorum Yapın</h4><hr />
+                    <div class="mb-3 row">
+                        <div class="row col-sm-10">
+                            <input type="hidden" class="form-control" id="BARKOD" name="BARKOD" value="@ViewBag.BARKOD" readonly />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="form-label col-sm-2 text-sm-end" for="KULLANICIID">Müşteri Numarası : </label>
+                        <div class="row col-sm-10">
+                            <input type="number" class="form-control" id="KULLANICIID" name="KULLANICIID" placeholder="Müşteri Numarası..." >
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="form-label col-sm-2 text-sm-end" for="YORUM">Yorum : </label>
+                        <div class="row col-sm-10">
+                            <textarea class="form-control" id="YORUM" name="YORUM" rows="2" placeholder="Bir şeyler yazınız..."></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="form-label col-sm-2 text-sm-end" for="TARIH">Tarih : </label>
+                        <div class="row col-sm-10">
+                            <input type="datetime-local" class="form-control" id="TARIH" name="TARIH" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")">
+                        </div>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-outline-danger" type="submit">Yorum Yap</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+<!--COMMENTLIST  -> YORUM YAPIP ÜRÜN ALTINDA LİSTELENME OLAYINI AYARLAR !-->
+<section style="background-color: #ad655f;">
+    <div class="container mt-4 py-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="card text-dark">
+                    <h3 class="text-center fs-4 fst-italic">YORUMLAR</h3>
+                    <hr />
+                    <div class="card-body p-4">
+                        @if (Model != null)
+                        {
+                            foreach (var yorumlarlistesi in Model)
+                            {
+                                <div class="d-flex flex-start">
+                                    <img class="rounded-circle shadow-1-strong me-3"
+                                         src="~/Templates/Comment/images/avatar.png" alt="avatar" width="60"
+                                         height="60" />
+                                    <div>
+                                        <h6 class="fw-bold mb-1">
+                                            @yorumlarlistesi.KULLANICILAR.KULLANICIADI
+                                        </h6>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0">
+                                                <span class="badge bg-primary">@yorumlarlistesi.TARIH</span>
+                                            </p>
+                                        </div>
+                                        <p class="mb-0">@yorumlarlistesi.YORUM</p>
+                                    </div>
+                                </div>
+                                <hr class="my-1" />
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

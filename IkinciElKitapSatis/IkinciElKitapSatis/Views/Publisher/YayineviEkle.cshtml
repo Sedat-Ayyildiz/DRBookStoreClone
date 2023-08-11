@@ -1,0 +1,34 @@
+﻿@model IkinciElKitapSatis.Models.YAYINEVLERI 
+
+@{
+    ViewBag.Title = "YayıneviEkle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas bi-book me-1"></i>
+                        <span class="fs-3">Yayınevi Ekleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        <form action="/Publisher/YayineviEkle" method="post">
+                            <input type="hidden" name="YAYINEVIID" class="form-control" /><br />
+                            <input type="text" name="YAYINEVIADI" class="form-control" placeholder="Yayınevi Adı" /><br />
+                            <input type="text" name="ADRES" class="form-control" placeholder="Adres" /><br />
+                            <input type="tel" name="TELEFON" class="form-control" placeholder="Telefon" /><br />
+                            <input type="email" name="EPOSTA" class="form-control" placeholder="E-Posta" /><br />
+                            <button class="btn btn-info" type="submit">Kaydet</button>
+                            <a href="/Publisher/Index" class="btn btn-outline-warning">Vazgeç</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>

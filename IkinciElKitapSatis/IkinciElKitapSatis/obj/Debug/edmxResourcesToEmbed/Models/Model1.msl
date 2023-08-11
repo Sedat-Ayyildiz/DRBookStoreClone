@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ikinciElKitapSatisModelStoreContainer" CdmEntityContainer="ikinciElKitapSatisEntities">
+    <EntitySetMapping Name="HAKKIMIZDA">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.HAKKIMIZDA">
+        <MappingFragment StoreEntitySet="HAKKIMIZDA">
+          <ScalarProperty Name="HAKKIMIZDAID" ColumnName="HAKKIMIZDAID" />
+          <ScalarProperty Name="HAKKIMIZDAACIKLAMA" ColumnName="HAKKIMIZDAACIKLAMA" />
+          <ScalarProperty Name="SPONSORRESIM" ColumnName="SPONSORRESIM" />
+          <ScalarProperty Name="SPONSORISIM" ColumnName="SPONSORISIM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ILETISIM">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.ILETISIM">
+        <MappingFragment StoreEntitySet="ILETISIM">
+          <ScalarProperty Name="ILETISIMID" ColumnName="ILETISIMID" />
+          <ScalarProperty Name="ILETISIMADRES" ColumnName="ILETISIMADRES" />
+          <ScalarProperty Name="ILETISIMTEL" ColumnName="ILETISIMTEL" />
+          <ScalarProperty Name="ILETISIMMAIL" ColumnName="ILETISIMMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KATEGORILER">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.KATEGORILER">
+        <MappingFragment StoreEntitySet="KATEGORILER">
+          <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+          <ScalarProperty Name="KATEGORIAD" ColumnName="KATEGORIAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KITAPLAR">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.KITAPLAR">
+        <MappingFragment StoreEntitySet="KITAPLAR">
+          <ScalarProperty Name="BARKOD" ColumnName="BARKOD" />
+          <ScalarProperty Name="KITAPADI" ColumnName="KITAPADI" />
+          <ScalarProperty Name="KITAPRESMI" ColumnName="KITAPRESMI" />
+          <ScalarProperty Name="KITAPACIKLAMA" ColumnName="KITAPACIKLAMA" />
+          <ScalarProperty Name="YAYINTARIHI" ColumnName="YAYINTARIHI" />
+          <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+          <ScalarProperty Name="STOKMIKTARI" ColumnName="STOKMIKTARI" />
+          <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+          <ScalarProperty Name="YAZARID" ColumnName="YAZARID" />
+          <ScalarProperty Name="YAYINEVIID" ColumnName="YAYINEVIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KULLANICILAR">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.KULLANICILAR">
+        <MappingFragment StoreEntitySet="KULLANICILAR">
+          <ScalarProperty Name="KULLANICIID" ColumnName="KULLANICIID" />
+          <ScalarProperty Name="KULLANICIADI" ColumnName="KULLANICIADI" />
+          <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+          <ScalarProperty Name="ADMINYETKISI" ColumnName="ADMINYETKISI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESAJLAR">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.MESAJLAR">
+        <MappingFragment StoreEntitySet="MESAJLAR">
+          <ScalarProperty Name="MESAJID" ColumnName="MESAJID" />
+          <ScalarProperty Name="ADSOYAD" ColumnName="ADSOYAD" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="MESAJ" ColumnName="MESAJ" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SATISLAR">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.SATISLAR">
+        <MappingFragment StoreEntitySet="SATISLAR">
+          <ScalarProperty Name="SATISID" ColumnName="SATISID" />
+          <ScalarProperty Name="KULLANICIID" ColumnName="KULLANICIID" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="TOPLAMTUTAR" ColumnName="TOPLAMTUTAR" />
+          <ScalarProperty Name="SIPARISID" ColumnName="SIPARISID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIPARISLER">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.SIPARISLER">
+        <MappingFragment StoreEntitySet="SIPARISLER">
+          <ScalarProperty Name="SIPARISID" ColumnName="SIPARISID" />
+          <ScalarProperty Name="KULLANICIID" ColumnName="KULLANICIID" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="BIRIMTUTAR" ColumnName="BIRIMTUTAR" />
+          <ScalarProperty Name="TOPLAMTUTAR" ColumnName="TOPLAMTUTAR" />
+          <ScalarProperty Name="ADET" ColumnName="ADET" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+          <ScalarProperty Name="EPOSTA" ColumnName="EPOSTA" />
+          <ScalarProperty Name="BARKOD" ColumnName="BARKOD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YAYINEVLERI">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.YAYINEVLERI">
+        <MappingFragment StoreEntitySet="YAYINEVLERI">
+          <ScalarProperty Name="YAYINEVIID" ColumnName="YAYINEVIID" />
+          <ScalarProperty Name="YAYINEVIADI" ColumnName="YAYINEVIADI" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+          <ScalarProperty Name="EPOSTA" ColumnName="EPOSTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YAZARLAR">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.YAZARLAR">
+        <MappingFragment StoreEntitySet="YAZARLAR">
+          <ScalarProperty Name="YAZARID" ColumnName="YAZARID" />
+          <ScalarProperty Name="YAZARADI" ColumnName="YAZARADI" />
+          <ScalarProperty Name="ULUS" ColumnName="ULUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="YORUMLAR">
+      <EntityTypeMapping TypeName="ikinciElKitapSatisModel.YORUMLAR">
+        <MappingFragment StoreEntitySet="YORUMLAR">
+          <ScalarProperty Name="YORUMID" ColumnName="YORUMID" />
+          <ScalarProperty Name="BARKOD" ColumnName="BARKOD" />
+          <ScalarProperty Name="YORUM" ColumnName="YORUM" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="KULLANICIID" ColumnName="KULLANICIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

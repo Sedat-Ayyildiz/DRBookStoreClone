@@ -1,0 +1,40 @@
+﻿@model IkinciElKitapSatis.Models.ILETISIM
+
+@{
+    ViewBag.Title = "IletisimGetir";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas bi-book me-1"></i>
+                        <span class="fs-3">İletişim Güncelleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("IletisimGuncelle", "Contact", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(s => s.ILETISIMID)
+                            @Html.LabelFor(s => s.ILETISIMADRES)
+                            @Html.TextBoxFor(s => s.ILETISIMADRES, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.ILETISIMTEL)
+                            @Html.TextBoxFor(s => s.ILETISIMTEL, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.ILETISIMMAIL)
+                            @Html.TextBoxFor(s => s.ILETISIMMAIL, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-success">Güncelle</button>
+                            <a href="/Contact/IletisimListele" class="btn btn-outline-danger">Vazgeç</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>

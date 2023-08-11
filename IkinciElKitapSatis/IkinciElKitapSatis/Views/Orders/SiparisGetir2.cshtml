@@ -1,0 +1,45 @@
+﻿@model IkinciElKitapSatis.Models.SIPARISLER
+
+@{
+    ViewBag.Title = "SiparisGetir2";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <span class="fs-3">Sipariş Güncelleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("SiparisGuncelle2", "Orders", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(s => s.SIPARISID)
+                            @Html.HiddenFor(s => s.KULLANICIID, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(s => s.TARIH, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(s => s.BARKOD, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(s => s.BIRIMTUTAR, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.HiddenFor(s => s.TOPLAMTUTAR, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.LabelFor(s => s.ADET)
+                            @Html.TextBoxFor(s => s.ADET, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.ADRES)
+                            @Html.TextBoxFor(s => s.ADRES, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.TELEFON)
+                            @Html.TextBoxFor(s => s.TELEFON, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.EPOSTA)
+                            @Html.TextBoxFor(s => s.EPOSTA, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-success">Kaydet</button>
+                            <a href="/Orders/SiparisListele" class="btn btn-outline-danger">Vazgeç</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

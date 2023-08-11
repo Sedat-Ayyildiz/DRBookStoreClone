@@ -1,0 +1,33 @@
+﻿@model IkinciElKitapSatis.Models.HAKKIMIZDA
+
+@{
+    ViewBag.Title = "HakkimizdaEkle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas bi-book me-1"></i>
+                        <span class="fs-3">Hakkımızda Ekleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        <form action="/About/HakkimizdaEkle" method="post">
+                            <input type="hidden" name="HAKKIMIZDAID" class="form-control" /><br />
+                            <input type="text" name="HAKKIMIZDAACIKLAMA" class="form-control" placeholder="Açıklama" /><br />
+                            <input type="text" name="SPONSORRESIM" class="form-control" placeholder="Sponsor Resim Uzantısı" /><br />
+                            <input type="text" name="SPONSORISIM" class="form-control" placeholder="Sponsor Adı" /><br />
+                            <button class="btn btn-info" type="submit">Kaydet</button>
+                            <a href="/About/HakkimizdaListele" class="btn btn-outline-warning">Vazgeç</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>

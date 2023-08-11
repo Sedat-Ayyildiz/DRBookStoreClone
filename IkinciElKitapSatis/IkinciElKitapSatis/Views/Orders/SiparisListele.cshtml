@@ -1,0 +1,89 @@
+﻿@using IkinciElKitapSatis.Models
+@model List<SIPARISLER>
+
+@{
+    ViewBag.Title = "SiparisListele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container-fluid px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        <span class="fs-3">Siparişlerim</span>
+                    </div>
+                    <div class="card-body">
+                        <table id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th>Siparis</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Tarih</th>
+                                    <th>Kitap</th>
+                                    <th>Adet</th>
+                                    <th>Birim Tutar</th>
+                                    <th>Toplam Tutar</th>
+                                    <th>Adres</th>
+                                    <th>Telefon</th>
+                                    <th>E-Posta</th>
+                                    <th>Sipariş İptal Et</th>
+                                    <th>Sipariş Güncelle</th>
+                                    <th>Sipariş Sat</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Siparis</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Tarih</th>
+                                    <th>Kitap</th>
+                                    <th>Adet</th>
+                                    <th>Birim Tutar</th>
+                                    <th>Toplam Tutar</th>
+                                    <th>Adres</th>
+                                    <th>Telefon</th>
+                                    <th>E-Posta</th>
+                                    <th>Sipariş İptal Et</th>
+                                    <th>Sipariş Güncelle</th>
+                                    <th>Sipariş Sat</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach (var siparislerlistesi in Model)
+                                {
+                                    <tr>
+                                        <td>@siparislerlistesi.SIPARISID</td>
+                                        <td>@siparislerlistesi.KULLANICILAR.KULLANICIADI</td>
+                                        <td>@siparislerlistesi.TARIH</td>
+                                        <td>@siparislerlistesi.KITAPLAR.KITAPADI</td>
+                                        <td>@siparislerlistesi.ADET</td>
+                                        <td>@siparislerlistesi.BIRIMTUTAR ₺</td>
+                                        <td>@siparislerlistesi.TOPLAMTUTAR ₺</td>
+                                        <td>@siparislerlistesi.ADRES</td>
+                                        <td>@siparislerlistesi.TELEFON</td>
+                                        <td>@siparislerlistesi.EPOSTA</td>
+                                        <td><a href="/Orders/SiparisSil2/@siparislerlistesi.SIPARISID" class="btn btn-danger">İptal Et</a></td>
+                                        <td><a href="/Orders/SiparisGetir2/@siparislerlistesi.SIPARISID" class="btn btn-success">Sipariş Güncelle</a></td>
+                                        <td>
+                                            @*<a href="/Sales/SatisEkle/@siparislerlistesi.SIPARISID" class="btn btn-warning">Satış Yap</a>*@
+                                            <form action="/Sales/SatisEkle" method="post">
+                                                @Html.Hidden("SIPARISID", siparislerlistesi.SIPARISID)
+                                                @Html.Hidden("KULLANICIID", siparislerlistesi.KULLANICIID)
+                                                @Html.Hidden("TARIH", siparislerlistesi.TARIH)
+                                                @Html.Hidden("TOPLAMTUTAR", siparislerlistesi.TOPLAMTUTAR)
+                                                <button type="submit" class="btn btn-warning">Satış Yap</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>

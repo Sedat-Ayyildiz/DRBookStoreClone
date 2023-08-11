@@ -1,0 +1,60 @@
+﻿@using IkinciElKitapSatis.Models
+@model IEnumerable<KITAPLAR>
+
+@{
+    ViewBag.Title = "KitapDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<style>
+    .nav-item-none {
+        display: none;
+    }
+</style>
+
+<!--Books Details-->
+<section class="py-0">
+    @foreach (var kitapdetay in Model)
+    {
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6">
+                    <img class="card-img-top mb-5 mb-md-0" src="@kitapdetay.KITAPRESMI" alt="..." style="height:575px" />
+                </div>
+                <div class="col-md-6">
+                    <div class="small mb-1">Barkod : @kitapdetay.BARKOD | Yayınevi : @kitapdetay.YAYINEVLERI.YAYINEVIADI</div>
+                    <h1 class="display-5 fw-bolder">@kitapdetay.KITAPADI | <span style="font-weight:300">@kitapdetay.KATEGORILER.KATEGORIAD</span></h1>
+                    <div class="fs-5 mb-5">
+                        @*<span class="text-decoration-line-through">₺45.00</span>*@
+                        <span>₺@kitapdetay.FIYAT</span>
+                    </div>
+                    <p class="lead">@kitapdetay.KITAPACIKLAMA</p>
+                    @if (User.IsInRole("A") || User.IsInRole("M"))
+                    {
+                        <div class="d-flex">
+                            <form action="/Orders/SepeteEkle" method="post">
+                                @Html.Hidden("BARKOD", kitapdetay.BARKOD)
+                                @Html.Hidden("TARIH", kitapdetay.YAYINTARIHI)
+                                @Html.Hidden("BIRIMTUTAR", kitapdetay.FIYAT)
+                                <button type="submit" class="btn btn-outline-dark flex-shrink-0">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Sepete Ekle
+                                </button>
+                            </form>
+                        </div>
+                    }
+                    <span>Stok Miktarı : @kitapdetay.STOKMIKTARI Adet</span>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+<div class="clearfix"></div>
+
+<!--COMMENT-->
+@Html.Action("Yorumlar", "Comment")
+
+<!--Footer-->
+@Html.Partial("_PartialFooter")

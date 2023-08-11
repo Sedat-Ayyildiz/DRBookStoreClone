@@ -1,0 +1,28 @@
+﻿<div class="row py-5 g-3">
+    <div class="col-md-6 first_col ">
+        <h1 class="text-center mt-3">Bize Ulaşın</h1>
+        <form class="p-4 mt-5" method="post">
+            <div class="mb-3">
+                <label for="ADSOYAD" class="form-label">Ad Soyad</label>
+                <input type="text" class="form-control" name="ADSOYAD" id="ADSOYAD" placeholder="Sedat Ayyıldız">
+            </div>
+            <div class="mb-3">
+                <label for="MAIL" class="form-label">E-Mail</label>
+                <input type="text" class="form-control" name="MAIL" id="MAIL" placeholder="d&r@gmail.com">
+            </div>
+            <div class="mb-3">
+                <label for="MESAJ" class="form-label">Mesaj</label>
+                <textarea type="text" class="form-control" name="MESAJ" id="MESAJ" placeholder="Bir şeyler yazınız" rows="3"></textarea>
+            </div>
+            <div class="mb-3" style="display:none">
+                <input type="datetime-local" name="TARIH" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")"/><br />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary">Gönder</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 sec_col">
+        <img src="/Templates/Contact/img/contact.jpg" class="img-fluid">
+    </div>
+</div>

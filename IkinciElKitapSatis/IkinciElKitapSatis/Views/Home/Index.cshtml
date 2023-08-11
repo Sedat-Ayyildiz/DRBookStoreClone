@@ -1,0 +1,62 @@
+﻿@using IkinciElKitapSatis.Models
+@model List<KITAPLAR>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Header-->
+@Html.Partial("_PartialHeader")
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1 text-center">
+                <label class="form-label">Kitap Ara : </label>
+            </div>
+            <div class="col-md-7">
+                @Html.TextBox("p", null, new { @class = "form-control", placeholder = "Kitap Adı" })
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="Ara" class="form-control" />
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+}
+
+<!-- Section-->
+<section>
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            @foreach (var kitap in Model)
+            {
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <img class="d-block w-100" style="width: 250px; height: 225px" src="@kitap.KITAPRESMI" alt="...">
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <h5 class="fw-bolder">@kitap.KITAPADI</h5>
+                                <p style="font-style:italic">@kitap.YAZARLAR.YAZARADI</p>
+                                <p style="font-weight:500">@kitap.KATEGORILER.KATEGORIAD</p>
+                                <p class="mt-1 mb-0" style="font-size:12px">@kitap.YAYINTARIHI.ToString()</p>
+                                <p>₺@kitap.FIYAT</p>
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Home/KitapDetay/@kitap.BARKOD">Detaylar</a></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+@Html.Partial("_PartialFooter")

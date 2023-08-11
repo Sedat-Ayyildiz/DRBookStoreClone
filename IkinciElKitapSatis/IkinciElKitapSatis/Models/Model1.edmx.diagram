@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6fcd9e1daf1b407eba0d20288d7d2131" Name="Diagram1">
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.HAKKIMIZDA" Width="1.5" PointX="2.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.ILETISIM" Width="1.5" PointX="4.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.KATEGORILER" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.KITAPLAR" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.KULLANICILAR" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.MESAJLAR" Width="1.5" PointX="7.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.SATISLAR" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.SIPARISLER" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.YAYINEVLERI" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.YAZARLAR" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ikinciElKitapSatisModel.YORUMLAR" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_KITAPLAR_KATEGORILER" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_KITAPLAR_YAYINEVLERI" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_KITAPLAR_YAZARLAR" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_SIPARISLER_KITAPLAR" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_YORUMLAR_KITAPLAR" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_SIPARISLER_KULLANICILAR" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_YORUMLAR_KULLANICILAR" ManuallyRouted="false" />
+        <AssociationConnector Association="ikinciElKitapSatisModel.FK_SATISLAR_SIPARISLER" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

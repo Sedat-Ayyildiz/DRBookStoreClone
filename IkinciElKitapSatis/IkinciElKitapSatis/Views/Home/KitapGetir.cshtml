@@ -1,0 +1,55 @@
+﻿@model IkinciElKitapSatis.Models.KITAPLAR
+
+@{
+    ViewBag.Title = "KitapGetir";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas bi-book me-1"></i>
+                        <span class="fs-3">Kitap Güncelleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("KitapGuncelle", "Home", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(s => s.BARKOD)
+                            @Html.LabelFor(s => s.KITAPADI)
+                            @Html.TextBoxFor(s => s.KITAPADI, new { @class = "form-control"})
+                            <br />
+                            @Html.LabelFor(s => s.KITAPRESMI)
+                            @Html.TextBoxFor(s => s.KITAPRESMI, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.KITAPACIKLAMA)
+                            @Html.TextBoxFor(s => s.KITAPACIKLAMA, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.YAYINTARIHI)
+                            @Html.TextBoxFor(s => s.YAYINTARIHI, new { @class = "form-control", type = "datetime-local" })
+                            <br />
+                            @Html.LabelFor(s => s.YAYINEVIID)
+                            @Html.DropDownListFor(s => s.YAYINEVIID, (List<SelectListItem>)ViewBag.x, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.KATEGORIID)
+                            @Html.DropDownListFor(s => s.KATEGORIID, (List<SelectListItem>)ViewBag.k, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.YAZARID)
+                            @Html.DropDownListFor(s => s.YAZARID, (List<SelectListItem>)ViewBag.y, new { @class = "form-control" })
+                            <br />
+                            @Html.LabelFor(s => s.STOKMIKTARI)
+                            @Html.TextBoxFor(s => s.STOKMIKTARI, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-success">Güncelle</button>
+                            <a href="/Home/KitapListele" class="btn btn-outline-danger">Vazgeç</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>

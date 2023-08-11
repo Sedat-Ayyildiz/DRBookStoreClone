@@ -1,0 +1,32 @@
+﻿@model IkinciElKitapSatis.Models.YAZARLAR
+
+@{
+    ViewBag.Title = "YazarEkle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<body class="container">
+    <div id="layoutSidenav_content" class="mt-3">
+        <main>
+            <div class="container px-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas bi-book me-1"></i>
+                        <span class="fs-3">Yazar Ekleme Sayfası</span>
+                    </div>
+                    <div class="card-body">
+                        <form action="/Author/YazarEkle" method="post">
+                            <input type="hidden" name="YAZARID" class="form-control" /><br />
+                            <input type="text" name="YAZARADI" class="form-control" placeholder="Yazar Adı" /><br />
+                            <input type="text" name="ULUS" class="form-control" placeholder="Ulus" /><br />
+                            <button class="btn btn-info" type="submit">Kaydet</button>
+                            <a href="/Author/Index" class="btn btn-outline-warning">Vazgeç</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--FOOTER-->
+        @Html.Partial("_PartialFooter")
+    </div>
+</body>

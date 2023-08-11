@@ -1,0 +1,60 @@
+﻿@using IkinciElKitapSatis.Models
+@model List<HAKKIMIZDA>
+
+@{
+    ViewBag.Title = "HakkimizdaListele";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="layoutSidenav_content" class="mt-3">
+    <main>
+        <div class="container-fluid px-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    <span class="fs-3">Hakkımızda Listesi</span>
+                    <a class="btn btn-primary ms-2 mb-2" href="/About/HakkimizdaEkle">Yeni Hakkımızda Ekle</a>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Açıklama</th>
+                                <th>Sponsor Resmi</th>
+                                <th>Sponsor İsmi</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Açıklama</th>
+                                <th>Sponsor Resmi</th>
+                                <th>Sponsor İsmi</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var hakkimizdalistesi in Model)
+                            {
+                                <tr>
+                                    <td>@hakkimizdalistesi.HAKKIMIZDAID</td>
+                                    <td>@hakkimizdalistesi.HAKKIMIZDAACIKLAMA</td>
+                                    <td>@hakkimizdalistesi.SPONSORRESIM</td>
+                                    <td>@hakkimizdalistesi.SPONSORISIM</td>
+                                    <td><a href="/About/HakkimizdaSil/@hakkimizdalistesi.HAKKIMIZDAID" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/About/HakkimizdaGetir/@hakkimizdalistesi.HAKKIMIZDAID" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--FOOTER-->
+    @Html.Partial("_PartialFooter")
+</div>

@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ikinciElKitapSatisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HAKKIMIZDA">
+    <Key>
+      <PropertyRef Name="HAKKIMIZDAID" />
+    </Key>
+    <Property Name="HAKKIMIZDAID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HAKKIMIZDAACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="SPONSORRESIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPONSORISIM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ILETISIM">
+    <Key>
+      <PropertyRef Name="ILETISIMID" />
+    </Key>
+    <Property Name="ILETISIMID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ILETISIMADRES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ILETISIMTEL" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="ILETISIMMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="KATEGORILER">
+    <Key>
+      <PropertyRef Name="KATEGORIID" />
+    </Key>
+    <Property Name="KATEGORIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORIAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KITAPLAR" Relationship="Self.FK_KITAPLAR_KATEGORILER" FromRole="KATEGORILER" ToRole="KITAPLAR" />
+  </EntityType>
+  <EntityType Name="KITAPLAR">
+    <Key>
+      <PropertyRef Name="BARKOD" />
+    </Key>
+    <Property Name="BARKOD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KITAPADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KITAPRESMI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KITAPACIKLAMA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="YAYINTARIHI" Type="DateTime" Precision="3" />
+    <Property Name="FIYAT" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="STOKMIKTARI" Type="Int32" />
+    <Property Name="KATEGORIID" Type="Int32" />
+    <Property Name="YAZARID" Type="Int32" />
+    <Property Name="YAYINEVIID" Type="Int32" />
+    <NavigationProperty Name="KATEGORILER" Relationship="Self.FK_KITAPLAR_KATEGORILER" FromRole="KITAPLAR" ToRole="KATEGORILER" />
+    <NavigationProperty Name="YAYINEVLERI" Relationship="Self.FK_KITAPLAR_YAYINEVLERI" FromRole="KITAPLAR" ToRole="YAYINEVLERI" />
+    <NavigationProperty Name="YAZARLAR" Relationship="Self.FK_KITAPLAR_YAZARLAR" FromRole="KITAPLAR" ToRole="YAZARLAR" />
+    <NavigationProperty Name="SIPARISLER" Relationship="Self.FK_SIPARISLER_KITAPLAR" FromRole="KITAPLAR" ToRole="SIPARISLER" />
+    <NavigationProperty Name="YORUMLAR" Relationship="Self.FK_YORUMLAR_KITAPLAR" FromRole="KITAPLAR" ToRole="YORUMLAR" />
+  </EntityType>
+  <EntityType Name="KULLANICILAR">
+    <Key>
+      <PropertyRef Name="KULLANICIID" />
+    </Key>
+    <Property Name="KULLANICIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KULLANICIADI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SIFRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADMINYETKISI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SIPARISLER" Relationship="Self.FK_SIPARISLER_KULLANICILAR" FromRole="KULLANICILAR" ToRole="SIPARISLER" />
+    <NavigationProperty Name="YORUMLAR" Relationship="Self.FK_YORUMLAR_KULLANICILAR" FromRole="KULLANICILAR" ToRole="YORUMLAR" />
+  </EntityType>
+  <EntityType Name="MESAJLAR">
+    <Key>
+      <PropertyRef Name="MESAJID" />
+    </Key>
+    <Property Name="MESAJID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADSOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MESAJ" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TARIH" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SATISLAR">
+    <Key>
+      <PropertyRef Name="SATISID" />
+    </Key>
+    <Property Name="SATISID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KULLANICIID" Type="Int32" />
+    <Property Name="TARIH" Type="DateTime" Precision="3" />
+    <Property Name="TOPLAMTUTAR" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="SIPARISID" Type="Int32" />
+    <NavigationProperty Name="SIPARISLER" Relationship="ikinciElKitapSatisModel.FK_SATISLAR_SIPARISLER" FromRole="SATISLAR" ToRole="SIPARISLER" />
+  </EntityType>
+  <EntityType Name="SIPARISLER">
+    <Key>
+      <PropertyRef Name="SIPARISID" />
+    </Key>
+    <Property Name="SIPARISID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KULLANICIID" Type="Int32" />
+    <Property Name="TARIH" Type="DateTime" Precision="3" />
+    <Property Name="BIRIMTUTAR" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="TOPLAMTUTAR" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="ADET" Type="Int32" />
+    <Property Name="ADRES" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="EPOSTA" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="BARKOD" Type="Int32" />
+    <NavigationProperty Name="KITAPLAR" Relationship="Self.FK_SIPARISLER_KITAPLAR" FromRole="SIPARISLER" ToRole="KITAPLAR" />
+    <NavigationProperty Name="KULLANICILAR" Relationship="Self.FK_SIPARISLER_KULLANICILAR" FromRole="SIPARISLER" ToRole="KULLANICILAR" />
+    <NavigationProperty Name="SATISLAR" Relationship="ikinciElKitapSatisModel.FK_SATISLAR_SIPARISLER" FromRole="SIPARISLER" ToRole="SATISLAR" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="YAYINEVLERI">
+    <Key>
+      <PropertyRef Name="YAYINEVIID" />
+    </Key>
+    <Property Name="YAYINEVIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YAYINEVIADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ADRES" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFON" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="EPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KITAPLAR" Relationship="Self.FK_KITAPLAR_YAYINEVLERI" FromRole="YAYINEVLERI" ToRole="KITAPLAR" />
+  </EntityType>
+  <EntityType Name="YAZARLAR">
+    <Key>
+      <PropertyRef Name="YAZARID" />
+    </Key>
+    <Property Name="YAZARID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YAZARADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ULUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KITAPLAR" Relationship="Self.FK_KITAPLAR_YAZARLAR" FromRole="YAZARLAR" ToRole="KITAPLAR" />
+  </EntityType>
+  <EntityType Name="YORUMLAR">
+    <Key>
+      <PropertyRef Name="YORUMID" />
+    </Key>
+    <Property Name="YORUMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BARKOD" Type="Int32" />
+    <Property Name="YORUM" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="TARIH" Type="DateTime" Precision="3" />
+    <Property Name="KULLANICIID" Type="Int32" />
+    <NavigationProperty Name="KITAPLAR" Relationship="Self.FK_YORUMLAR_KITAPLAR" FromRole="YORUMLAR" ToRole="KITAPLAR" />
+    <NavigationProperty Name="KULLANICILAR" Relationship="Self.FK_YORUMLAR_KULLANICILAR" FromRole="YORUMLAR" ToRole="KULLANICILAR" />
+  </EntityType>
+  <Association Name="FK_KITAPLAR_KATEGORILER">
+    <End Role="KATEGORILER" Type="Self.KATEGORILER" Multiplicity="0..1" />
+    <End Role="KITAPLAR" Type="Self.KITAPLAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KATEGORILER">
+        <PropertyRef Name="KATEGORIID" />
+      </Principal>
+      <Dependent Role="KITAPLAR">
+        <PropertyRef Name="KATEGORIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KITAPLAR_YAYINEVLERI">
+    <End Role="YAYINEVLERI" Type="Self.YAYINEVLERI" Multiplicity="0..1" />
+    <End Role="KITAPLAR" Type="Self.KITAPLAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YAYINEVLERI">
+        <PropertyRef Name="YAYINEVIID" />
+      </Principal>
+      <Dependent Role="KITAPLAR">
+        <PropertyRef Name="YAYINEVIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KITAPLAR_YAZARLAR">
+    <End Role="YAZARLAR" Type="Self.YAZARLAR" Multiplicity="0..1" />
+    <End Role="KITAPLAR" Type="Self.KITAPLAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YAZARLAR">
+        <PropertyRef Name="YAZARID" />
+      </Principal>
+      <Dependent Role="KITAPLAR">
+        <PropertyRef Name="YAZARID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIPARISLER_KITAPLAR">
+    <End Role="KITAPLAR" Type="Self.KITAPLAR" Multiplicity="0..1" />
+    <End Role="SIPARISLER" Type="Self.SIPARISLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KITAPLAR">
+        <PropertyRef Name="BARKOD" />
+      </Principal>
+      <Dependent Role="SIPARISLER">
+        <PropertyRef Name="BARKOD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YORUMLAR_KITAPLAR">
+    <End Role="KITAPLAR" Type="Self.KITAPLAR" Multiplicity="0..1" />
+    <End Role="YORUMLAR" Type="Self.YORUMLAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KITAPLAR">
+        <PropertyRef Name="BARKOD" />
+      </Principal>
+      <Dependent Role="YORUMLAR">
+        <PropertyRef Name="BARKOD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIPARISLER_KULLANICILAR">
+    <End Role="KULLANICILAR" Type="Self.KULLANICILAR" Multiplicity="0..1" />
+    <End Role="SIPARISLER" Type="Self.SIPARISLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KULLANICILAR">
+        <PropertyRef Name="KULLANICIID" />
+      </Principal>
+      <Dependent Role="SIPARISLER">
+        <PropertyRef Name="KULLANICIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YORUMLAR_KULLANICILAR">
+    <End Role="KULLANICILAR" Type="Self.KULLANICILAR" Multiplicity="0..1" />
+    <End Role="YORUMLAR" Type="Self.YORUMLAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KULLANICILAR">
+        <PropertyRef Name="KULLANICIID" />
+      </Principal>
+      <Dependent Role="YORUMLAR">
+        <PropertyRef Name="KULLANICIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ikinciElKitapSatisEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HAKKIMIZDA" EntityType="Self.HAKKIMIZDA" />
+    <EntitySet Name="ILETISIM" EntityType="Self.ILETISIM" />
+    <EntitySet Name="KATEGORILER" EntityType="Self.KATEGORILER" />
+    <EntitySet Name="KITAPLAR" EntityType="Self.KITAPLAR" />
+    <EntitySet Name="KULLANICILAR" EntityType="Self.KULLANICILAR" />
+    <EntitySet Name="MESAJLAR" EntityType="Self.MESAJLAR" />
+    <EntitySet Name="SATISLAR" EntityType="Self.SATISLAR" />
+    <EntitySet Name="SIPARISLER" EntityType="Self.SIPARISLER" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="YAYINEVLERI" EntityType="Self.YAYINEVLERI" />
+    <EntitySet Name="YAZARLAR" EntityType="Self.YAZARLAR" />
+    <EntitySet Name="YORUMLAR" EntityType="Self.YORUMLAR" />
+    <AssociationSet Name="FK_KITAPLAR_KATEGORILER" Association="Self.FK_KITAPLAR_KATEGORILER">
+      <End Role="KATEGORILER" EntitySet="KATEGORILER" />
+      <End Role="KITAPLAR" EntitySet="KITAPLAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KITAPLAR_YAYINEVLERI" Association="Self.FK_KITAPLAR_YAYINEVLERI">
+      <End Role="YAYINEVLERI" EntitySet="YAYINEVLERI" />
+      <End Role="KITAPLAR" EntitySet="KITAPLAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KITAPLAR_YAZARLAR" Association="Self.FK_KITAPLAR_YAZARLAR">
+      <End Role="YAZARLAR" EntitySet="YAZARLAR" />
+      <End Role="KITAPLAR" EntitySet="KITAPLAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIPARISLER_KITAPLAR" Association="Self.FK_SIPARISLER_KITAPLAR">
+      <End Role="KITAPLAR" EntitySet="KITAPLAR" />
+      <End Role="SIPARISLER" EntitySet="SIPARISLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YORUMLAR_KITAPLAR" Association="Self.FK_YORUMLAR_KITAPLAR">
+      <End Role="KITAPLAR" EntitySet="KITAPLAR" />
+      <End Role="YORUMLAR" EntitySet="YORUMLAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIPARISLER_KULLANICILAR" Association="Self.FK_SIPARISLER_KULLANICILAR">
+      <End Role="KULLANICILAR" EntitySet="KULLANICILAR" />
+      <End Role="SIPARISLER" EntitySet="SIPARISLER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YORUMLAR_KULLANICILAR" Association="Self.FK_YORUMLAR_KULLANICILAR">
+      <End Role="KULLANICILAR" EntitySet="KULLANICILAR" />
+      <End Role="YORUMLAR" EntitySet="YORUMLAR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SATISLAR_SIPARISLER" Association="ikinciElKitapSatisModel.FK_SATISLAR_SIPARISLER">
+      <End Role="SIPARISLER" EntitySet="SIPARISLER" />
+      <End Role="SATISLAR" EntitySet="SATISLAR" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_SATISLAR_SIPARISLER">
+    <End Type="ikinciElKitapSatisModel.SIPARISLER" Role="SIPARISLER" Multiplicity="0..1" />
+    <End Type="ikinciElKitapSatisModel.SATISLAR" Role="SATISLAR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SIPARISLER">
+        <PropertyRef Name="SIPARISID" />
+      </Principal>
+      <Dependent Role="SATISLAR">
+        <PropertyRef Name="SIPARISID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
